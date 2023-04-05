@@ -96,6 +96,10 @@ const parseString = (() => {
             value = parameter.defaultValue;
           }
 
+          if (typeof value === 'function' && parameter.key.endsWith('()')) {
+            return value();
+          }
+
           if (typeof value === 'function') {
             return value;
           }
